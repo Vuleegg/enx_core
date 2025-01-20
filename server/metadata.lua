@@ -1,0 +1,16 @@
+return {
+    ['DOB'] = "DD/MM/YYYY",
+    ['isDead'] = {},
+    ['job'] = {},
+    ['gang'] = {},
+    ['first_name'] = "FirstName",
+    ['last_name'] = "LastName",
+    ['inventory'] = {},
+    ['player_skin'] = {},
+    ['last_location'] = vec3(0, 0, 0),
+    ['group'] = "user",
+    ['sex'] = "m",
+    ['status'] = {},
+    ['isNew'] = true,
+    ['accounts'] = {},
+}
