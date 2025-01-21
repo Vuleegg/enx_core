@@ -32,3 +32,5 @@ end
 ENX.ClearInterval = function(id)
     if Intervals[id] then Intervals[id] = -1 end
 end
+
+GlobalState.MaximumSlots = GetConvarInt('sv_maxclients', 48)

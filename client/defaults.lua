@@ -1,4 +1,4 @@
-local config = require 'config.main'
+local extensions = require 'config.main'.extensions
 
 local function removeHudComponents(components)
     for index, enabled in ipairs(components) do
@@ -24,7 +24,7 @@ local function disableWeaponPickups(pickups)
 end
 
 RegisterNetEvent('enx_core:client:onPlayerReady', function()
-    local hudComponents = config.extensions.hudComponents
+    local hudComponents = extensions.hudComponents
 
     local components = {
         hudComponents.wantedStars,     -- 1
@@ -54,11 +54,11 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
     -- Call the function to remove HUD components if enabled
     removeHudComponents(components)
 
-    if config.extensions.disableAimAssist then
+    if extensions.disableAimAssist then
         SetPlayerTargetingMode(3)
     end
 
-    if config.extensions.disableNPCDrops then
+    if extensions.disableNPCDrops then
         disableWeaponPickups({
             `PICKUP_WEAPON_CARBINERIFLE`,
             `PICKUP_WEAPON_PISTOL`,
@@ -66,14 +66,14 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         })
     end
 
-    if config.extensions.disableDispatchServices then
+    if extensions.disableDispatchServices then
         for i = 1, 15 do
             EnableDispatchService(i, false)
         end
         SetAudioFlag('PoliceScannerDisabled', true)
     end
 
-    if config.extensions.disableScenarios then
+    if extensions.disableScenarios then
         disableScenarios({
             "WORLD_VEHICLE_ATTRACTOR",
             "WORLD_VEHICLE_BICYCLE_BMX",
@@ -81,21 +81,21 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         })
     end
 
-    if config.extensions.disableHealthRegeneration then
+    if extensions.disableHealthRegeneration then
         SetPlayerHealthRechargeMultiplier(cache.playerId, 0.0)
     end
 
-    if config.extensions.enablePVP then
+    if extensions.enablePVP then
         SetCanAttackFriendly(cache.ped, true, false)
         NetworkSetFriendlyFireOption(true)
     end
 
-    if not config.extensions.enableWantedLevel then
+    if not extensions.enableWantedLevel then
         ClearPlayerWantedLevel(cache.playerId)
         SetMaxWantedLevel(0)
     end
 
-    if config.extensions.disableVehicleSeatShuff then
+    if extensions.disableVehicleSeatShuff then
         lib.onCache('vehicle', function(value)
             if value and value.seat > -1 then
                 SetPedIntoVehicle(cache.ped, cache.vehicle, -1)
@@ -104,7 +104,7 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         end)
     end
 
-    if config.extensions.removeHudComponents and config.extensions.removeHudComponents.radioStation then
+    if extensions.removeHudComponents and extensions.removeHudComponents.radioStation then
         lib.onCache('vehicle', function(value)
             if value then
                 SetUserRadioControlEnabled(false)
@@ -115,11 +115,11 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
 
     ENX.Thread(function()
         while true do
-            if config.extensions.disableDisplayAmmo then
+            if extensions.disableDisplayAmmo then
                 DisplayAmmoThisFrame(false)
             end
 
-            if config.extensions.disableVehicleRewards then
+            if extensions.disableVehicleRewards then
                 DisablePlayerVehicleRewards(cache.playerId)
             end
 

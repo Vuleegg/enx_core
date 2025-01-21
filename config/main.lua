@@ -97,11 +97,13 @@ return {
         disableDisplayAmmo = false,
         spawnVehMaxUpgrades = false,
 
-        discordRPC = false,
         rpc_setup = {
-            client_id = 00000000000000000000000000000000,
-            invite = 'https://discord.com/invite/00000000000000000000000000000000', -- https://discord.com/invite/00000000000000000000000000000000
-            debug = false
+            discordRPC = false,
+            app_id = '',
+            largeIcon = { icon = 'logo_name', text = 'This is a large icon with text' },
+            smallIcon = { icon = 'logo_name', text = 'This is a small icon with text' },
+            firstButton = { text = 'First Button!', link = 'fivem://connect/localhost:30120' },
+            secondButton = { text = 'Second Button!', link = 'fivem://connect/localhost:30120' }
         },           
     }
 }
