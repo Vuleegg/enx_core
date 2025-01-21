@@ -4,24 +4,7 @@ return {
     ['forceJobDuty'] = true,
     ['enableAdminDuty'] = true,
     ['enableGamerTag'] = true,
-
-    ['defaultJob'] = {
-        ['name'] = "unemployed",
-        ['label'] = "Civilian",
-        ['grade'] = {
-            ['name'] = "Freelancer",
-            ['level'] = 0,
-        },
-    },
-
-    defaultGang = {
-        ['name'] =  "none",
-        ['label'] = "No Gang",
-        ['grade']= {
-           ['grade'] = "Unaffiliated",
-           ['level'] = 0,
-        },
-    },
+    ['DefaultLocale'] = 'en',
 
     AdminGroups = {
         ['user'] = { name = 'user', label = 'User', hiddenDuty = false },

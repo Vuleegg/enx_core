@@ -1,5 +1,3 @@
-require 'config.main'
-
 return {
     ['charinfo'] = {
         ['DOB'] = "DD/MM/YYYY",
@@ -8,12 +6,26 @@ return {
         ['isNew'] = true,
         ['group'] = "user",
         ['sex'] = "m",
+        ['last_location'] = vec4(0, 0, 0),
     },
-    ['job'] = defaultJob,
-    ['gang'] = defaultGang,
+    ['job'] = {
+        ['name'] = "unemployed",
+        ['label'] = "Civilian",
+        ['grade'] = {
+            ['name'] = "Freelancer",
+            ['rank'] = 0,
+        },
+    },
+    ['gang'] = {
+        ['name'] =  "none",
+        ['label'] = "No Gang",
+        ['grade']= {
+        ['grade'] = "Unaffiliated",
+        ['rank'] = 0,
+        },
+    },
     ['inventory'] = {},
-    ['player_skin'] = {},
-    ['last_location'] = vec3(0, 0, 0),
+    ['skin'] = {},
     ['status'] = { 
         ['hunger'] = 100, 
         ['thirst'] = 100,
@@ -26,5 +38,11 @@ return {
         ['cash'] = 0, 
         ['black_money'] = 0
     },
+    ['addictions'] = {
+        ['weed'] = 0,
+        ['cocaine'] = 0,        
+        ['meth'] = 0,
+        ['opium'] = 0,
+    }     
 }
  
