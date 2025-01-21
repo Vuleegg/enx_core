@@ -1,7 +1,30 @@
-Copyright (C) 2015-2024 Jérémie N'gadi
+# 🌟 ENX Core: Next Extended for FiveM 🌟
 
-This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
+## 📌 What is ENX Core?
+**ENX Core** (short for **Next Extended**) is an enhanced and optimized framework specifically designed for the FiveM environment. 
 
-This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
+The goal of ENX Core is not to replicate but to provide a superior, more efficient system for developers and server owners. 
 
-You should have received a copy Of the GNU General Public License along with this program. If Not, see <http://www.gnu.org/licenses/>.
+---
+
+## 🚀 Key Features of ENX Core:
+
+- ✅ **Improved performance and optimized workflows**
+  - Enhanced codebase for faster execution and reduced lag.
+
+- ✅ **Easier customization and resource development**
+  - Developer-friendly structure to simplify customization.
+
+- ✅ **Better compatibility with modern FiveM resources**
+  - Seamless integration with the latest FiveM updates and assets.
+
+- ✅ **Stability and scalability for large-scale servers**
+  - Robust design capable of handling high player counts with stability.
+
+---
+
+> **Contribute:**
+We welcome contributions! Feel free to submit issues, pull requests, or ideas to improve ENX Core further.
+
+> **License:**
+This project is licensed under #SOOON#.
