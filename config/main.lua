@@ -5,12 +5,30 @@ return {
     enableAdminDuty = true, -- # admin groups that dont have hiddenDuty enabled can join duty with this command and when this command is enabled  they can use commands only with duty enabled
     enableGamerTag = true, -- # tag for admins 0.00 MS
 
+    --[[
+    PlaceHolders:
+    {server_name} - Server Display Name
+    {server_endpoint} - Server IP:Server Port
+    {server_players} - Current Player Count
+    {server_maxplayers} - Max Player Count
+
+    {player_name} - Player Name
+    {player_rp_name} - Player RP Name
+    {player_id} - Player ID
+    {player_street} - Player Street Name
+]]
+    
     enableRichPresence = true, 
     RichPresence = {
-        app_id = "984589564645852",
-        server_name = "ENX Roleplay", 
-        maxPlayers = 48,
-        server_logo = "logo",
+        appId = 0, -- Discord Application ID,
+        assetName = "LargeIcon", --image name for the "large" icon.
+        assetText = "{server_name}", -- Text to display on the asset
+        buttons = {
+            { label = "Join Server", url = "fivem://connect/{server_endpoint}" },
+            { label = "Discord", url = "https://discord.esx-framework.org" },
+        },
+        presence = "{player_name} [{player_id}] | {server_players}/{server_maxplayers}",
+        refresh = 1 * 60 * 1000, -- 1 minute
     }
 
     AdminGroups = {
