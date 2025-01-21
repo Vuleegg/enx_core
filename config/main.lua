@@ -40,6 +40,7 @@ return {
     enableAdminDuty = true,
     enableGamerTag = true,
     DefaultLocale = 'en',
+    notifypos = 'top-right', -- 'top' | 'top-right' | 'top-left' | 'bottom' | 'bottom-right' | 'bottom-left'
 
     AdminGroups = {
         user = { name = 'user', label = 'User', hiddenDuty = false },
