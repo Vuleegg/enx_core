@@ -1,52 +1,26 @@
 return {
-    spawnLocation = vec4(0, 0, 0, 0),-- # works only if you're using our Default Register
-    useDefaultRegister = true, 
-    forceJobDuty = true, -- # from jobs data if you're logged on duty you will be on login again on duty beside that job dont have automatically dutyonDefault
-    enableAdminDuty = true, -- # admin groups that dont have hiddenDuty enabled can join duty with this command and when this command is enabled  they can use commands only with duty enabled
-    enableGamerTag = true, -- # tag for admins 0.00 MS
+    spawnLocation = vec4(0, 0, 0, 0),
+    useDefaultRegister = true,
+    forceJobDuty = true,
+    enableAdminDuty = true,
+    enableGamerTag = true,
 
-    defaultJob = {
-        name = "unemployed",
-        label = "Civilian"
-        grade = {
+    ['defaultJob'] = {
+        ['name'] = "unemployed",
+        ['label'] = "Civilian",
+        ['grade'] {
             name = "Freelancer",
-            level = 0, 
-        }, 
+            level = 0,
+        },
     },
-    
+
     defaultGang = {
         name = "none",
-        label = "No Gang"
+        label = "No Gang",
         grade = {
             name = "Unaffiliated",
-            level = 0, 
-        }, 
-    },
-
-    --[[
-    PlaceHolders:
-    {server_name} - Server Display Name
-    {server_endpoint} - Server IP:Server Port
-    {server_players} - Current Player Count
-    {server_maxplayers} - Max Player Count
-
-    {player_name} - Player Name
-    {player_rp_name} - Player RP Name
-    {player_id} - Player ID
-    {player_street} - Player Street Name
-]]
-
-    enableRichPresence = true, 
-    RichPresence = {
-        appId = 0, -- Discord Application ID,
-        assetName = "LargeIcon", --image name for the "large" icon.
-        assetText = "{server_name}", -- Text to display on the asset
-        buttons = {
-            { label = "Join Server", url = "fivem://connect/{server_endpoint}" },
-            { label = "Discord", url = "https://discord.esx-framework.org" },
+            level = 0,
         },
-        presence = "{player_name} [{player_id}] | {server_players}/{server_maxplayers}",
-        refresh = 1 * 60 * 1000, -- 1 minute
     },
 
     AdminGroups = {
@@ -58,48 +32,49 @@ return {
         ['developer'] = { name = 'developer', label = 'Server Developer', hiddenDuty = true },
     },
 
-    RemoveHudComponents = {
-        [1] = true,  --WANTED_STARS,
-        [2] = true,  --WEAPON_ICON
-        [3] = true,  --CASH
-        [4] = true,  --MP_CASH
-        [5] = true,  --MP_MESSAGE
-        [6] = true,  --VEHICLE_NAME
-        [7] = true,  -- AREA_NAME
-        [8] = true,  -- VEHICLE_CLASS
-        [9] = true,  --STREET_NAME
-        [10] = false, --HELP_TEXT
-        [11] = false, --FLOATING_HELP_TEXT_1
-        [12] = false, --FLOATING_HELP_TEXT_2
-        [13] = true,   --CASH_CHANGE
-        [14] = false,  --RETICLE
-        [15] = false,  --SUBTITLE_TEXT
-        [16] = false,  --RADIO_STATIONS
-        [17] = false,  --SAVING_GAME,
-        [18] = false,  --GAME_STREAM
-        [19] = true,   --WEAPON_WHEEL
-        [20] = false,  --WEAPON_WHEEL_STATS
-        [21] = true,   --HUD_COMPONENTS
-        [22] = true, --HUD_WEAPONS
-    },
+    extensions = {
+        removeHudComponents = {
+            [1] = true,  -- WANTED_STARS
+            [2] = true,  -- WEAPON_ICON
+            [3] = true,  -- CASH
+            [4] = true,  -- MP_CASH
+            [5] = true,  -- MP_MESSAGE
+            [6] = true,  -- VEHICLE_NAME
+            [7] = true,  -- AREA_NAME
+            [8] = true,  -- VEHICLE_CLASS
+            [9] = true,  -- STREET_NAME
+            [10] = false, -- HELP_TEXT
+            [11] = false, -- FLOATING_HELP_TEXT_1
+            [12] = false, -- FLOATING_HELP_TEXT_2
+            [13] = true,   -- CASH_CHANGE
+            [14] = false,  -- RETICLE
+            [15] = false,  -- SUBTITLE_TEXT
+            [16] = false,  -- RADIO_STATIONS
+            [17] = false,  -- SAVING_GAME
+            [18] = false,  -- GAME_STREAM
+            [19] = true,   -- WEAPON_WHEEL
+            [20] = false,  -- WEAPON_WHEEL_STATS
+            [21] = true,   -- HUD_COMPONENTS
+            [22] = true,   -- HUD_WEAPONS
+        },
 
-    EnablePaycheck = true, -- enable paycheck ( only works for jobs )
-    DiscordLogs = false, -- Logs to a nominated Discord channel via webhook (default is false)
-    EnableSocietyPayouts = true,   -- pay from the society account that the player is employed at? Requirement: none
-    PaycheckInterval = 60, -- how often to recieve pay checks in minutes
-    EnableDebug  = false, -- Use Debug options?
-    EnablePVP = true, -- Allow Player to player combat
-    EnableWantedLevel = false,     -- Use Normal GTA wanted Level?
-    Multichar = false, 
-
-    DisableHealthRegeneration = true, -- Player will no longer regenerate health
-    DisableVehicleRewards = false, -- Disables Player Recieving weapons from vehicles
-    DisableNPCDrops = false, -- stops NPCs from dropping weapons on death
-    DisableDispatchServices = false, -- Disable Dispatch services
-    DisableScenarios = false, -- Disable Scenarios
-    DisableWeaponWheel = false, -- Disables default weapon wheel
-    DisableAimAssist = false, -- disables AIM assist (mainly on controllers)
-    DisableVehicleSeatShuff = false, -- Disables vehicle seat shuff
-    DisableDisplayAmmo = false, -- Disable ammunition display
-    SpawnVehMaxUpgrades = false,       -- admin vehicles spawn with max vehcle settings
+        enablePaycheck = true,
+        discordLogs = false,
+        enableSocietyPayouts = true,
+        paycheckInterval = 60,
+        enableDebug = false,
+        enablePVP = true,
+        enableWantedLevel = false,
+        multichar = false,
+        disableHealthRegeneration = true,
+        disableVehicleRewards = false,
+        disableNPCDrops = false,
+        disableDispatchServices = false,
+        disableScenarios = false,
+        disableWeaponWheel = false,
+        disableAimAssist = false,
+        disableVehicleSeatShuff = false,
+        disableDisplayAmmo = false,
+        spawnVehMaxUpgrades = false,
+    }
 }

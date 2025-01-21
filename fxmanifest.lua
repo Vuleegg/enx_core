@@ -8,7 +8,6 @@ shared_scripts {
   'config/main.lua',
   'config/permissions.lua',
   'shared/locale.lua',
-  'bridge/esx/shared/*.lua',
 }  
 
 client_scripts {
@@ -16,8 +15,8 @@ client_scripts {
   'client/player_groups.lua',
   'client/functions.lua',
   'client/events.lua',
+  'client/defaults.lua',
   'client/utils/callbacks.lua',
-  'bridge/esx/client/main.lua',
 }
 
 server_scripts {
@@ -30,7 +29,6 @@ server_scripts {
   'server/paycheck.lua',
   'server/utils/callbacks.lua',
   'server/utils/logs.lua',
-  'bridge/esx/server/main.lua',
 }
 
 files {

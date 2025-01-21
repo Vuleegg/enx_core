@@ -27,3 +27,4 @@ return {
         ['black_money'] = 0
     },
 }
+ 
