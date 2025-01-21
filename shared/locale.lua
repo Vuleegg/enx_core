@@ -1,4 +1,4 @@
-require 'config.main'
+local config = require 'config.main'
 
 local Locales = {}
 
@@ -15,7 +15,7 @@ function LoadLocale(locale)
 end
 
 function L(key, ...)
-    local localeData = Locales[DefaultLocale]
+    local localeData = Locales[config.DefaultLocale]
     if localeData and localeData[key] then
         return localeData[key]:format(...)
     end
@@ -24,11 +24,11 @@ end
 
 function SetLocale(locale)
     if LoadLocale(locale) then
-        DefaultLocale = locale
+        config.DefaultLocale = locale
         print(('[INFO] Locale set to %s'):format(locale))
     else
         print(('[ERROR] Failed to set locale to %s'):format(locale))
     end
 end
 
-LoadLocale(DefaultLocale)
+LoadLocale(config.DefaultLocale)

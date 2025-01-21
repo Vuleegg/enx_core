@@ -1,3 +1,3 @@
-require 'config.main'
-require 'client.defaults'
+local config = require 'config.main'
+local defaults = require 'client.defaults'
 

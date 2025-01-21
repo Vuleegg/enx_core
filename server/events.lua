@@ -1,3 +1,5 @@
+local metadata = require 'server.metadata' 
+
 createUserId = function()
     local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     local userId = ""
