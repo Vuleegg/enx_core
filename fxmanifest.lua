@@ -47,6 +47,5 @@ dependencies {
   'oxmysql',
 }
 
-provide 'es_extended'
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'
