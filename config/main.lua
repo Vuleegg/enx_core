@@ -1,25 +1,25 @@
 return {
-    spawnLocation = vec4(0, 0, 0, 0),
-    useDefaultRegister = true,
-    forceJobDuty = true,
-    enableAdminDuty = true,
-    enableGamerTag = true,
+    ['spawnLocation'] = vec4(0, 0, 0, 0),
+    ['useDefaultRegister'] = true,
+    ['forceJobDuty'] = true,
+    ['enableAdminDuty'] = true,
+    ['enableGamerTag'] = true,
 
     ['defaultJob'] = {
         ['name'] = "unemployed",
         ['label'] = "Civilian",
-        ['grade'] {
-            name = "Freelancer",
-            level = 0,
+        ['grade'] = {
+            ['name'] = "Freelancer",
+            ['level'] = 0,
         },
     },
 
     defaultGang = {
-        name = "none",
-        label = "No Gang",
-        grade = {
-            name = "Unaffiliated",
-            level = 0,
+        ['name'] =  "none",
+        ['label'] = "No Gang",
+        ['grade']= {
+           ['grade'] = "Unaffiliated",
+           ['level'] = 0,
         },
     },
 
@@ -32,8 +32,8 @@ return {
         ['developer'] = { name = 'developer', label = 'Server Developer', hiddenDuty = true },
     },
 
-    extensions = {
-        removeHudComponents = {
+    ['extensions'] = {
+        ['removeHudComponents'] = {
             [1] = true,  -- WANTED_STARS
             [2] = true,  -- WEAPON_ICON
             [3] = true,  -- CASH
@@ -58,23 +58,23 @@ return {
             [22] = true,   -- HUD_WEAPONS
         },
 
-        enablePaycheck = true,
-        discordLogs = false,
-        enableSocietyPayouts = true,
-        paycheckInterval = 60,
-        enableDebug = false,
-        enablePVP = true,
-        enableWantedLevel = false,
-        multichar = false,
-        disableHealthRegeneration = true,
-        disableVehicleRewards = false,
-        disableNPCDrops = false,
-        disableDispatchServices = false,
-        disableScenarios = false,
-        disableWeaponWheel = false,
-        disableAimAssist = false,
-        disableVehicleSeatShuff = false,
-        disableDisplayAmmo = false,
-        spawnVehMaxUpgrades = false,
+        ['enablePaycheck'] = true,
+        ['discordLogs'] = false,
+        ['enableSocietyPayouts'] = true,
+        ['paycheckInterval'] = 60,
+        ['enableDebug'] = false,
+        ['enablePVP'] = true,
+        ['enableWantedLevel'] = false,
+        ['multichar'] = false,
+        ['disableHealthRegeneration'] = true,
+        ['disableVehicleRewards'] = false,
+        ['disableNPCDrops'] = false,
+        ['disableDispatchServices'] = false,
+        ['disableScenarios'] = false,
+        ['disableWeaponWheel'] = false,
+        ['disableAimAssist'] = false,
+        ['disableVehicleSeatShuff'] = false,
+        ['disableDisplayAmmo'] = false,
+        ['spawnVehMaxUpgrades'] = false,
     }
 }
