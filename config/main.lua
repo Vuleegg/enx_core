@@ -46,7 +46,7 @@ return {
         [22] = true, --HUD_WEAPONS
     },
 
-    EnablePaycheck = true, -- enable paycheck
+    EnablePaycheck = true, -- enable paycheck ( only works for jobs )
     DiscordLogs = false, -- Logs to a nominated Discord channel via webhook (default is false)
     EnableSocietyPayouts = true,   -- pay from the society account that the player is employed at? Requirement: none
     PaycheckInterval = 60 -- how often to recieve pay checks in minutes
