@@ -1,16 +1,16 @@
-ESX = {}
+ENX = {}
 
 exports("loadCore", function()
-    return ESX
+    return ENX
 end)
 
 exports("getSharedObject", function()
-    return ESX
+    return ENX
 end)
 
 AddEventHandler("esx:getSharedObject", function(cb)
-    if ESX.IsFunctionReference(cb) then
-        cb(ESX)
+    if ENX.IsFunctionReference(cb) then
+        cb(ENX)
     end
     local invokingResource = GetInvokingResource()
 end)

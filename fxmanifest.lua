@@ -1,6 +1,5 @@
 fx_version 'cerulean'
 game 'gta5'
-lua54 'yes'
 description 'ENX CORE'
 version '0.0.1'
 
@@ -42,4 +41,13 @@ files {
   'locales/*.json'
 }
 
-dependency 'ox_lib'
+dependencies {
+  '/server:10731',
+  '/onesync',
+  'ox_lib',
+  'oxmysql',
+}
+
+provide 'es_extended'
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'
