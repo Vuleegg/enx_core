@@ -96,5 +96,12 @@ return {
         disableVehicleSeatShuff = false,
         disableDisplayAmmo = false,
         spawnVehMaxUpgrades = false,
+
+        discordRPC = false,
+        rpc_setup = {
+            client_id = 00000000000000000000000000000000,
+            invite = 'https://discord.com/invite/00000000000000000000000000000000', -- https://discord.com/invite/00000000000000000000000000000000
+            debug = false
+        },           
     }
 }
