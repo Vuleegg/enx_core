@@ -12,7 +12,16 @@ return {
             name = "Freelancer",
             level = 0, 
         }, 
-    }
+    },
+    
+    defaultGang = {
+        name = "none",
+        label = "No Gang"
+        grade = {
+            name = "Unaffiliated",
+            level = 0, 
+        }, 
+    },
 
     --[[
     PlaceHolders:
@@ -38,7 +47,7 @@ return {
         },
         presence = "{player_name} [{player_id}] | {server_players}/{server_maxplayers}",
         refresh = 1 * 60 * 1000, -- 1 minute
-    }
+    },
 
     AdminGroups = {
         ['user'] = { name = 'user', label = 'User', hiddenDuty = false },
@@ -77,20 +86,20 @@ return {
     EnablePaycheck = true, -- enable paycheck ( only works for jobs )
     DiscordLogs = false, -- Logs to a nominated Discord channel via webhook (default is false)
     EnableSocietyPayouts = true,   -- pay from the society account that the player is employed at? Requirement: none
-    PaycheckInterval = 60 -- how often to recieve pay checks in minutes
-    EnableDebug  = false -- Use Debug options?
-    EnablePVP = true -- Allow Player to player combat
-    EnableWantedLevel = false     -- Use Normal GTA wanted Level?
+    PaycheckInterval = 60, -- how often to recieve pay checks in minutes
+    EnableDebug  = false, -- Use Debug options?
+    EnablePVP = true, -- Allow Player to player combat
+    EnableWantedLevel = false,     -- Use Normal GTA wanted Level?
     Multichar = false, 
 
-    DisableHealthRegeneration = true -- Player will no longer regenerate health
-    DisableVehicleRewards = false -- Disables Player Recieving weapons from vehicles
-    DisableNPCDrops = false -- stops NPCs from dropping weapons on death
-    DisableDispatchServices = false -- Disable Dispatch services
-    DisableScenarios = false -- Disable Scenarios
-    DisableWeaponWheel = false -- Disables default weapon wheel
-    DisableAimAssist = false -- disables AIM assist (mainly on controllers)
-    DisableVehicleSeatShuff = false -- Disables vehicle seat shuff
-    DisableDisplayAmmo = false -- Disable ammunition display
-    SpawnVehMaxUpgrades = false       -- admin vehicles spawn with max vehcle settings
+    DisableHealthRegeneration = true, -- Player will no longer regenerate health
+    DisableVehicleRewards = false, -- Disables Player Recieving weapons from vehicles
+    DisableNPCDrops = false, -- stops NPCs from dropping weapons on death
+    DisableDispatchServices = false, -- Disable Dispatch services
+    DisableScenarios = false, -- Disable Scenarios
+    DisableWeaponWheel = false, -- Disables default weapon wheel
+    DisableAimAssist = false, -- disables AIM assist (mainly on controllers)
+    DisableVehicleSeatShuff = false, -- Disables vehicle seat shuff
+    DisableDisplayAmmo = false, -- Disable ammunition display
+    SpawnVehMaxUpgrades = false,       -- admin vehicles spawn with max vehcle settings
 }
