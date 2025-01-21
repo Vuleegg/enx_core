@@ -6,6 +6,8 @@ version '0.0.1'
 
 shared_scripts {
   '@ox_lib/init.lua',
+  'config/main.lua',
+  'config/permissions.lua',
   'shared/locale.lua',
   'bridge/esx/shared/*.lua',
 }  
@@ -35,7 +37,6 @@ files {
   'shared/gangs.lua',
   'shared/items.lua',
   'shared/jobs.lua',
-  'shared/permissions.lua',
   'shared/main.lua',
   'shared/weapons.lua',
   'locales/*.json'
