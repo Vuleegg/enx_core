@@ -3,7 +3,8 @@ return {
     useDefaultRegister = true, 
     forceJobDuty = true, -- # from jobs data if you're logged on duty you will be on login again on duty beside that job dont have automatically dutyonDefault
     enableAdminDuty = true, -- # admin groups that dont have hiddenDuty enabled can join duty with this command and when this command is enabled  they can use commands only with duty enabled
-   
+    enableGamerTag = true, -- # tag for admins 0.00 MS
+
     enableRichPresence = true, 
     RichPresence = {
         app_id = "984589564645852",
