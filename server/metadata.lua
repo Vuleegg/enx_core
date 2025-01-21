@@ -1,16 +1,30 @@
+require 'config.main'
+
 return {
-    ['DOB'] = "DD/MM/YYYY",
-    ['isDead'] = {},
-    ['job'] = {},
+    ['charinfo'] = {
+        ['DOB'] = "DD/MM/YYYY",
+        ['first_name'] = "FirstName",
+        ['last_name'] = "LastName",
+        ['isNew'] = true,
+        ['group'] = "user",
+        ['sex'] = "m",
+    },
+    ['job'] = {
+        ['name'] = defaultJob['name'],
+        ['label'] =  defaultJob['label']
+        ['grade'] = {
+            ['name'] =  defaultJob['grade']['name'],
+            ['level'] = defaultJob['grade']['level'], 
+        }, 
+    },
     ['gang'] = {},
-    ['first_name'] = "FirstName",
-    ['last_name'] = "LastName",
     ['inventory'] = {},
     ['player_skin'] = {},
     ['last_location'] = vec3(0, 0, 0),
-    ['group'] = "user",
-    ['sex'] = "m",
     ['status'] = {},
-    ['isNew'] = true,
-    ['accounts'] = {},
+    ['money'] = { 
+        ['bank'] = 0, 
+        ['cash'] = 0, 
+        ['black_money'] = 0
+    },
 }

@@ -5,6 +5,15 @@ return {
     enableAdminDuty = true, -- # admin groups that dont have hiddenDuty enabled can join duty with this command and when this command is enabled  they can use commands only with duty enabled
     enableGamerTag = true, -- # tag for admins 0.00 MS
 
+    defaultJob = {
+        name = "unemployed",
+        label = "Civilian"
+        grade = {
+            name = "Freelancer",
+            level = 0, 
+        }, 
+    }
+
     --[[
     PlaceHolders:
     {server_name} - Server Display Name
@@ -17,7 +26,7 @@ return {
     {player_id} - Player ID
     {player_street} - Player Street Name
 ]]
-    
+
     enableRichPresence = true, 
     RichPresence = {
         appId = 0, -- Discord Application ID,
@@ -32,6 +41,7 @@ return {
     }
 
     AdminGroups = {
+        ['user'] = { name = 'user', label = 'User', hiddenDuty = false },
         ['admin'] = { name = 'admin', label = 'Administrator', hiddenDuty = false },
         ['owner'] = { name = 'owner', label = 'Server Owner', hiddenDuty = true },
         ['superadmin'] = { name = 'superadmin', label = 'Super Administrator', hiddenDuty = false },

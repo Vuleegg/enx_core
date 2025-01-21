@@ -31,7 +31,7 @@ extensions:SeatShuffle = function()
         lib.onCache('vehicle', function(value)
             if value then 
                 if value.seat > -1 then
-                    SetPedIntoVehicle(cache.ped, cache.vehicle, seat)
+                    SetPedIntoVehicle(cache.ped, cache.vehicle, -1)
                     SetPedConfigFlag(cache, 184, true)
                 end
             end
@@ -162,7 +162,7 @@ extensions:DisableRadio = function()
             SetVehRadioStation(value,"OFF")
         end)
     end
-end
+end  
 
 extensions:EnablePvP = function()
     if EnablePVP then
