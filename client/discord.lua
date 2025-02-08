@@ -1,7 +1,7 @@
 local slots = MaximumSlots
 local config = require 'config.main'.extensions.discord
 
-if not config.enabled then return end
+if not config.discordRPC then return end
 
 AddStateBagChangeHandler('PlayerCount', '', function(bagName, _, value)
     if bagName == 'global' and value then
