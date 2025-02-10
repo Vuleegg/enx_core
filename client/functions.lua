@@ -55,3 +55,12 @@ RegisterNetEvent("enx_core:client:Alert")
  AddEventHandler("enx_core:client:Alert", function(data)
     ENX.SendAlert(data)
 end)
+
+ENX.SetVehicleCustoms = function(data)
+    if not data then return print("Data information is missing") end 
+    
+end
+
+exports('SetVehicleCustoms', ENX.SetVehicleCustoms)
+
+--exports.enx_core:SetVehicleCustoms(data)
