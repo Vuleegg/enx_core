@@ -30,9 +30,13 @@ ENX.SetInterval = function(id, msec, callback, onclear)
     elseif msec then Intervals[id] = msec end
 end
 
+exports('SetInterval', ENX.SetInterval)
+
 ENX.ClearInterval = function(id)
     if Intervals[id] then Intervals[id] = -1 end
 end
+
+exports('ClearInterval', ENX.ClearInterval)
 
 ENX.SendAlert = function(data)
   if not data then return print("Data information is missing") end 
@@ -41,9 +45,11 @@ ENX.SendAlert = function(data)
         description = data.description,
         position = data.position,
         icon = data.icon,
-        type = data.type
+        type = config.notifypos
     })
 end
+
+exports('SendAlert', ENX.SendAlert)
 
 RegisterNetEvent("enx_core:client:Alert") 
  AddEventHandler("enx_core:client:Alert", function(data)
