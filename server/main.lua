@@ -5,7 +5,10 @@ exports("loadCore", enx)
 
 RegisterServerEvent('enx_core:server:onPlayerReady')
 AddEventHandler('enx_core:server:onPlayerReady', function()     
-    Cache[source] = true
+    Cache[source] = {
+        name = GetPlayerName(source),
+        source = source,
+    }
 end)
 
 exports('onPlayerReady', function(func)
