@@ -25,7 +25,7 @@ enx.Cache.loadUserMeta = function(source)
     
     if not player.userId then return end
     
-    exports.oxmysql:execute('SELECT * FROM users_metadata WHERE userId = ?', {userId}, function(result)
+    exports.oxmysql:execute('SELECT * FROM users_metadata WHERE userId = ?', {player.userId}, function(result)
         if result and result[1] then
             Cache[source].metadata = {
                 charinfo = json.decode(result[1].charinfo),
