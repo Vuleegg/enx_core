@@ -1,12 +1,17 @@
+enx = {}
+Cache = {}
+
+exports("loadCore", enx)
+
 PlayerReady = false 
 
-ENX.PlayerReady = function(boolean)
+enx.PlayerReady = function(boolean)
     PlayerReady = boolean
 end
 
 AddStateBagChangeHandler('PlayerReady', ('player:%s'):format(cache.serverId), function(_, _, value)
     if not value then 
-      ENX.PlayerReady(value) 
+      enx.PlayerReady(value) 
     end
 end)
 

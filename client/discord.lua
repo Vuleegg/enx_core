@@ -9,7 +9,7 @@ AddStateBagChangeHandler('PlayerCount', '', function(bagName, _, value)
     end
 end)
 
-ENX.Thread(function()
+CreateThread(function()
     SetDiscordAppId(config.app_id)
     SetDiscordRichPresenceAsset(config.largeIcon.icon)
     SetDiscordRichPresenceAssetText(config.largeIcon.text)

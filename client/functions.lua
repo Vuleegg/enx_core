@@ -1,44 +1,6 @@
-local Intervals = {}
 local config = require 'config.main'
 
-ENX.Thread = function(func)
-    if type(func) ~= "function" then
-        error("ENX.Thread expects a function as an argument")
-    end
-
-    local thread = coroutine.create(func)
-
-    CreateThread(function()
-        local status, err = coroutine.resume(thread)
-        if not status then
-            print("^1[ENX.Thread ERROR]^7: " .. err)
-        end
-    end)
-end
-
-ENX.SetInterval = function(id, msec, callback, onclear)
-    if not Intervals[id] and msec then
-        Intervals[id] = msec
-        CreateThread(function()
-            repeat
-                local interval = Intervals[id]
-                Wait(interval)
-                callback(interval)
-            until interval == -1 and (onclear and onclear() or true)
-            Intervals[id] = nil
-        end)
-    elseif msec then Intervals[id] = msec end
-end
-
-exports('SetInterval', ENX.SetInterval)
-
-ENX.ClearInterval = function(id)
-    if Intervals[id] then Intervals[id] = -1 end
-end
-
-exports('ClearInterval', ENX.ClearInterval)
-
-ENX.SendAlert = function(data)
+enx.SendAlert = function(data)
   if not data then return print("Data information is missing") end 
     exports['enx-notify']:SendAlert({
         title = data.title,
@@ -49,18 +11,23 @@ ENX.SendAlert = function(data)
     })
 end
 
-exports('SendAlert', ENX.SendAlert)
+exports('SendAlert', enx.SendAlert)
 
-RegisterNetEvent("enx_core:client:Alert") 
- AddEventHandler("enx_core:client:Alert", function(data)
-    ENX.SendAlert(data)
+RegisterNetEvent("enx_core:SendAlert") 
+ AddEventHandler("enx_core:SendAlert", function(data)
+    enx.SendAlert(data)
 end)
 
-ENX.SetVehicleCustoms = function(data)
+enx.SetVehicleCustoms = function(data)
     if not data then return print("Data information is missing") end 
     
 end
 
-exports('SetVehicleCustoms', ENX.SetVehicleCustoms)
+exports('SetVehicleCustoms', enx.SetVehicleCustoms)
 
---exports.enx_core:SetVehicleCustoms(data)
+enx.GetVehicleCustoms = function(entity)
+    if not entity then return print("Entity is missing") end 
+    
+end
+
+exports('GetVehicleCustoms', enx.GetVehicleCustoms)

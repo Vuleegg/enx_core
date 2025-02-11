@@ -1,4 +1,4 @@
-ENX.DetectIdentifier = function(source)
+enx.DetectIdentifier = function(source)
     local identifiers = GetPlayerIdentifiers(source)
     local result = {}
     

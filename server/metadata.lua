@@ -43,5 +43,6 @@ return {
         cocaine = 0,        
         meth = 0,
         opium = 0,
+        heroin = 0
     }     
 }

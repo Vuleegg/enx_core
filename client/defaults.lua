@@ -113,7 +113,7 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         end)
     end
 
-    ENX.Thread(function()
+    CreateThread(function()
         while true do
             if extensions.disableDisplayAmmo then
                 DisplayAmmoThisFrame(false)

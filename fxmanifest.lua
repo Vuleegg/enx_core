@@ -32,10 +32,10 @@ server_scripts {
 }
 
 files {
+  'load.lua',
   'shared/gangs.lua',
   'shared/items.lua',
   'shared/jobs.lua',
-  'shared/main.lua',
   'shared/weapons.lua',
   'locales/*.json'
 }
