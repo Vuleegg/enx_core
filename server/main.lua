@@ -91,11 +91,12 @@ local function InsertUserBasic(source)
     end
 
     local query = [[
-        INSERT INTO users (username, license, license2, fivem, discord) 
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO users (userId, username, license, license2, fivem, discord) 
+        VALUES (?, ?, ?, ?, ?, ?)
     ]]
 
     local success = exports.oxmysql:execute(query, { 
+        createUserId(),
         username, 
         identifiers.license, 
         identifiers.license2 or "N/A", 
@@ -117,6 +118,7 @@ enx.StartLogin = function(source)
     end
 
     local meta = enx.Cache.loadUserMeta(source)
+
 end
 
 RegisterNetEvent("enx:onPlayerJoinQueue")
