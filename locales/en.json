@@ -1,5 +1,12 @@
 {
     "welcome_message": "Welcome to the server!",
-    "error_message": "Something went wrong!"
-  }
+    "error_message": "Something went wrong!",
+    "register_title" : "Register Menu",
+    "first_name" : "First Name",
+    "last_name" :  "Last Name",
+    "male" : "Male",
+    "female" : "Female",
+    "select_gender" : "Select Gender",
+    "dob" : "Date of Birth"
+}
   

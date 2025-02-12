@@ -99,6 +99,11 @@ enx.StartLogin = function(source)
 
     local meta = enx.Cache.loadUserMeta(source)
 
+    Cache[source].metadata = {  
+        steamName = GetPlayerName(source),      
+        source = source, 
+    }
+
 end
 
 RegisterNetEvent("enx:onPlayerJoinQueue")
