@@ -51,7 +51,6 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         hudComponents.hudWeapons,      -- 22
     }
 
-    -- Call the function to remove HUD components if enabled
     removeHudComponents(components)
 
     if extensions.disableAimAssist then
@@ -95,50 +94,28 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         SetMaxWantedLevel(0)
     end
 
-    if extensions.disableVehicleSeatShuff then
-        lib.onCache('vehicle', function(value)
-            if value and value.seat > -1 then
-                SetPedIntoVehicle(cache.ped, cache.vehicle, -1)
-                SetPedconfigFlag(cache.ped, 184, true)
-            end
-        end)
-    end
-
-    if extensions.removeHudComponents and extensions.removeHudComponents.radioStation then
-        lib.onCache('vehicle', function(value)
-            if value then
-                SetUserRadioControlEnabled(false)
-                SetVehRadioStation(value, "OFF")
-            end
-        end)
-    end
-
-    lib.onCache('weapon', function(value)
-        if not value then return end 
-    
-        CreateThread(function()
-            while cache.weapon do
-                Wait(0)
-                if extensions.disableDisplayAmmo then
-                    DisplayAmmoThisFrame(false)
-                end
-            end
-        end)
-    end)    
-
     lib.onCache('vehicle', function(value)
         if not value then return end
     
-        CreateThread(function()
-            while cache.vehicle do
-                Wait(0)
-                if extensions.disableVehicleRewards then
-                    DisablePlayerVehicleRewards(cache.playerId)
-                end
-            end
-        end)
-        
-    end)    
+        if value.seat > -1 and not extensions.disableVehicleSeatShuff then
+            SetPedIntoVehicle(cache.ped, cache.vehicle, -1)
+            SetPedConfigFlag(cache.ped, 184, true)
+        end
+    
+        if hudComponents.radioStations then
+            SetUserRadioControlEnabled(false)
+            SetVehRadioStation(value, "OFF")
+        end
+    
+        if extensions.disableVehicleRewards then
+            DisablePlayerVehicleRewards(cache.playerId)
+        end
+    end)
 
+    lib.onCache('weapon', function(value)
+        if not value then return end 
+        if not extensions.disableDisplayAmmo then return end 
+        DisplayAmmoThisFrame(false)
+    end)      
     
 end)
