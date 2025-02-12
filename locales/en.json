@@ -1,4 +1,5 @@
 {
+    "main_title" : "ENX-CORE",
     "welcome_message": "Welcome to the server!",
     "error_message": "Something went wrong!",
     "register_title" : "Register Menu",
@@ -7,6 +8,20 @@
     "male" : "Male",
     "female" : "Female",
     "select_gender" : "Select Gender",
-    "dob" : "Date of Birth"
+    "dob" : "Date of Birth",
+    "command": {
+        "tpm": { "help": "TP To Marker (Admin Only)" }
+    },
+    "error": {
+        "tp_error": "Error While Teleporting.",
+        "not_online": "Player not online",
+        "wrong_format": "Incorrect format",
+        "no_access": "No access to this command",
+        "location_not_exist": "Location does not exist",
+        "no_waypoint": "No Waypoint Set."
+    },
+    "success": {
+        "teleported_waypoint": "Teleported To Waypoint."
+    }
 }
   

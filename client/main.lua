@@ -35,3 +35,4 @@ RegisterNetEvent("enx_core:client:onPlayerReady", function(playerId, Player)
     enx.Cache.setPlayerMeta("charinfo", Player.charinfo)
     enx.Cache.setPlayerMeta("userId", playerId)
 end)
+

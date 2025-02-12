@@ -42,6 +42,7 @@ return {
     DefaultLocale = 'en',
     notifypos = 'top-right', -- 'top' | 'top-right' | 'top-left' | 'bottom' | 'bottom-right' | 'bottom-left'
     main_identifier = "license",
+    default_notify_icon = "fa-solid fa-bullhorn",
 
     AdminGroups = {
         user = { name = 'user', label = 'User', hiddenDuty = false },
