@@ -13,8 +13,8 @@ end
 
 exports('SendAlert', enx.SendAlert)
 
-RegisterNetEvent("enx_core:SendAlert") 
- AddEventHandler("enx_core:SendAlert", function(data)
+RegisterNetEvent("enx_core:client:SendAlert") 
+ AddEventHandler("enx_core:client:SendAlert", function(data)
     enx.SendAlert(data)
 end)
 
