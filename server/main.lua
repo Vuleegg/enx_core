@@ -2,6 +2,7 @@ enx = {}
 Cache = {}
 local metadata = require 'server.metadata'
 local config = require 'config.main'
+local indexes = require 'server.identifiers'
 
 exports("loadCore", enx)
 
@@ -10,52 +11,6 @@ enx.Cache.getUser = function(source)
 end
 
 exports('getUser', enx.Cache.getUser)
-
-local function GetIdentifiers(source)
-    local identifiers = {
-        license = nil,
-        license2 = nil,
-        fivem = nil,
-        discord = nil
-    }
-
-    for _, id in ipairs(GetPlayerIdentifiers(source)) do
-        if string.sub(id, 1, 8) == "license:" then
-            if not identifiers.license then
-                identifiers.license = string.sub(id, 9)
-            else
-                identifiers.license2 = string.sub(id, 9)
-            end
-        elseif string.sub(id, 1, 5) == "fivem:" then
-            identifiers.fivem = string.sub(id, 6)
-        elseif string.sub(id, 1, 8) == "discord:" then
-            identifiers.discord = string.sub(id, 9)
-        end
-    end
-
-    return identifiers
-end
-
-GetUserId = function(identifierValue)
-    local mainIdentifier = config.main_identifier or "license"
-
-    local query = string.format("SELECT userId FROM `users` WHERE `%s` = ?", mainIdentifier)
-    local data = MySQL.query.await(query, { identifierValue })
-
-    if data and #data > 0 then
-        return data[1].userId 
-    end
-
-    return nil 
-end
-
-createUserId = function()
-    local charset, userId = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", ""
-    for _ = 1, 7 do
-        userId = userId .. charset:sub(math.random(1, #charset), math.random(1, #charset))
-    end
-    return userId
-end
 
 enx.Cache.loadUserMeta = function(source)
     local player = enx.Cache.getUser(source)
@@ -82,7 +37,7 @@ AddEventHandler('playerDropped', function()
 end)
 
 local function InsertUserBasic(source)
-    local identifiers = GetIdentifiers(source)
+    local identifiers = indexes.GetIdentifiers(source)
     local username = GetPlayerName(source) or "Unknown"
 
     if not identifiers.license then
@@ -90,13 +45,15 @@ local function InsertUserBasic(source)
         return
     end
 
-    local query = [[
+    local userId = indexes.createUserId()
+
+    local query_users = [[
         INSERT INTO users (userId, username, license, license2, fivem, discord) 
         VALUES (?, ?, ?, ?, ?, ?)
     ]]
 
-    local success = exports.oxmysql:execute(query, { 
-        createUserId(),
+    local id = MySQL.insert.await(query_users, { 
+        userId,
         username, 
         identifiers.license, 
         identifiers.license2 or "N/A", 
@@ -104,14 +61,37 @@ local function InsertUserBasic(source)
         identifiers.discord or "N/A"
     })
 
-    if success and success.affectedRows > 0 then
-        print("[ENX-CORE] New user inserted: " .. username)
+    if id then
+        print("[ENX-CORE] New user inserted: " .. username .. " (ID: " .. id .. ")")
+
+        local query_metadata = [[
+            INSERT INTO users_metadata (userId, charinfo, money, job, gang, inventory, skin) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ]]
+
+        local meta_id = MySQL.insert.await(query_metadata, {
+            userId,
+            metadata.charinfo,
+            metadata.money,
+            metadata.job,
+            metadata.gang,
+            metadata.inventory,
+            metadata.skin
+        })
+
+        if meta_id then
+            print("[ENX-CORE] Metadata inserted for user: " .. username .. " (ID: " .. userId .. ")")
+        else
+            print("[ENX-CORE] Failed to insert metadata for user: " .. username)
+        end
+    else
+        print("[ENX-CORE] Failed to insert user: " .. username)
     end
 end
 
 enx.StartLogin = function(source)
-    local identifiers = GetIdentifiers(source)
-    local userId = GetUserId(identifiers.license) 
+    local identifiers = indexes.GetIdentifiers(source)
+    local userId = indexes.GetUserId(identifiers.license) 
 
     if not userId then
         InsertUserBasic(source)

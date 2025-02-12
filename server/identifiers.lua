@@ -1,30 +1,47 @@
-enx.DetectIdentifier = function(source)
-    local identifiers = GetPlayerIdentifiers(source)
-    local result = {}
-    
-    for _, identifier in pairs(identifiers) do
-        if string.match(identifier, "discord:") then
-            table.insert(result, { type = "discord", value = identifier })
-        elseif string.match(identifier, "license:") then
-            table.insert(result, { type = "license", value = identifier })
-        elseif string.match(identifier, "license2:") then
-            table.insert(result, { type = "license2", value = identifier })
+return { 
+    GetIdentifiers = function(source)
+        local identifiers = {
+            license = nil,
+            license2 = nil,
+            fivem = nil,
+            discord = nil
+        }
+
+        for _, id in ipairs(GetPlayerIdentifiers(source)) do
+            if string.sub(id, 1, 8) == "license:" then
+                if not identifiers.license then
+                    identifiers.license = string.sub(id, 9)
+                else
+                    identifiers.license2 = string.sub(id, 9)
+                end
+            elseif string.sub(id, 1, 5) == "fivem:" then
+                identifiers.fivem = string.sub(id, 6)
+            elseif string.sub(id, 1, 8) == "discord:" then
+                identifiers.discord = string.sub(id, 9)
+            end
         end
-    end
 
-    local hardware_id = nil
-    local numTokens = GetNumPlayerTokens(source)
-    for i = 0, numTokens - 1 do
-        local token = GetPlayerToken(source, i)
-        if string.match(token, "hardware:") then
-            hardware_id = token
-            break
+        return identifiers
+    end,
+
+    GetUserId = function(identifierValue)
+        local mainIdentifier = config.main_identifier or "license"
+
+        local query = string.format("SELECT userId FROM `users` WHERE `%s` = ?", mainIdentifier)
+        local data = MySQL.query.await(query, { identifierValue })
+
+        if data and #data > 0 then
+            return data[1].userId 
         end
-    end
 
-    if hardware_id then
-        table.insert(result, { type = "hardware", value = hardware_id })
-    end
+        return nil 
+    end,
 
-    return result, hardware_id
-end
+    createUserId = function()
+        local charset, userId = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", ""
+        for _ = 1, 7 do
+            userId = userId .. charset:sub(math.random(1, #charset), math.random(1, #charset))
+        end
+        return userId
+    end,
+}
