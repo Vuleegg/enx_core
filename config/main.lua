@@ -41,6 +41,7 @@ return {
     enableGamerTag = true,
     DefaultLocale = 'en',
     notifypos = 'top-right', -- 'top' | 'top-right' | 'top-left' | 'bottom' | 'bottom-right' | 'bottom-left'
+    main_identifier = "license",
 
     AdminGroups = {
         user = { name = 'user', label = 'User', hiddenDuty = false },
