@@ -113,17 +113,32 @@ RegisterNetEvent('enx_core:client:onPlayerReady', function()
         end)
     end
 
-    CreateThread(function()
-        while true do
-            if extensions.disableDisplayAmmo then
-                DisplayAmmoThisFrame(false)
+    lib.onCache('weapon', function(value)
+        if not value then return end 
+    
+        CreateThread(function()
+            while cache.weapon do
+                Wait(0)
+                if extensions.disableDisplayAmmo then
+                    DisplayAmmoThisFrame(false)
+                end
             end
+        end)
+    end)    
 
-            if extensions.disableVehicleRewards then
-                DisablePlayerVehicleRewards(cache.playerId)
+    lib.onCache('vehicle', function(value)
+        if not value then return end
+    
+        CreateThread(function()
+            while cache.vehicle do
+                Wait(0)
+                if extensions.disableVehicleRewards then
+                    DisablePlayerVehicleRewards(cache.playerId)
+                end
             end
+        end)
+        
+    end)    
 
-            Wait(0)
-        end
-    end)
+    
 end)

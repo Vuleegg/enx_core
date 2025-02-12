@@ -106,6 +106,8 @@ enx.StartLogin = function(source)
 
 end
 
+exports('StartLogin', enx.StartLogin)
+
 RegisterNetEvent("enx:onPlayerJoinQueue")
 AddEventHandler("enx:onPlayerJoinQueue", function()
     local src = source
