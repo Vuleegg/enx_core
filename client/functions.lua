@@ -31,3 +31,17 @@ enx.GetVehicleCustoms = function(entity)
 end
 
 exports('GetVehicleCustoms', enx.GetVehicleCustoms)
+
+enx.Trim = function(value)
+    if not value then return nil end
+    return (string.gsub(value, '^%s*(.-)%s*$', '%1'))
+end
+
+exports('Trim', enx.Trim)
+
+enx.getPlate(vehicle)
+    if vehicle == 0 then return end
+    return enx.Trim(GetVehicleNumberPlateText(vehicle))
+end
+
+exports('getPlate', enx.getPlate)
