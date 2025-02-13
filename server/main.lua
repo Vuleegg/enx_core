@@ -187,3 +187,33 @@ AddEventHandler("onServerResourceStart", function(resource)
     end
 end)
 
+---@param source number The players source ID.
+---@param key string The metadata key to set.
+---@param value any The value to assign to the metadata key.
+enx.Cache.setPlayerMeta = function(source, key, value)
+    if not source or source == 0 then return end
+    if type(key) ~= "string" or key == "" then return end
+    if value == nil then return end
+
+    local s = tonumber(source)
+    Cache[s] = Cache[s] or { metadata = {} }
+    Cache[s].metadata = Cache[s].metadata or {}
+
+    if type(value) == "table" then
+        Cache[s].metadata[key] = Cache[s].metadata[key] or {}
+        for k, v in pairs(value) do
+            Cache[s].metadata[key][k] = v
+        end
+    else
+        Cache[s].metadata[key] = value
+    end
+end
+
+enx.Cache.setJob = function(source, job, rank)
+    if not source or source == 0 then return end 
+
+    local jobData = enx.Jobs[job]
+    if not jobData then return end
+
+    enx.Cache.setPlayerMeta(source, "job", jobData)
+end
