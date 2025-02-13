@@ -3,6 +3,7 @@ Cache = {}
 local metadata = require 'server.metadata'
 local config = require 'config.main'
 local indexes = require 'server.identifiers'
+local ox_inventory = exports.ox_inventory
 
 exports("loadCore", enx)
 
@@ -113,3 +114,27 @@ AddEventHandler("enx:onPlayerJoinQueue", function()
     local src = source
     enx.StartLogin(src)
 end)
+
+---@param data table The data containing source, item, count, and optional metadata.
+---@field source number The player's source ID.
+---@field item string The item name.
+---@field count number The item quantity.
+---@field metadata table|nil Optional metadata for the item.
+
+enx.Cache.AddItem = function(data)
+    if not data or not data.source or not data.item or not data.count then return end
+
+    local source = tonumber(data.source)
+    local item = tostring(data.item)
+    local count = tonumber(data.count)
+    local metadata = data.metadata or {} 
+
+    if not source or not item or not count or count <= 0 then return end
+
+    local player = enx.Cache.getUser(source)
+    if not player then return end
+
+    ox_inventory.AddItem(source, item, count, metadata)
+end
+
+exports('AddItem', enx.Cache.AddItem)
