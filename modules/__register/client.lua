@@ -1,4 +1,7 @@
+local config = require 'config.main'
+
 RegisterNetEvent("enx_core:client:openRegisterMenu", function()
+    if not config.useDefaultRegister then return end
     local input = lib.inputDialog(L('register_title'), {
         {type = 'input', label = L('first_name'), description = 'Nicolas Cage', required = true},
         {type = 'input', label = L('last_name'), description = 'Some number description', required = true},
