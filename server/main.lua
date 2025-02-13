@@ -215,5 +215,36 @@ enx.Cache.setJob = function(source, job, rank)
     local jobData = enx.Jobs[job]
     if not jobData then return end
 
-    enx.Cache.setPlayerMeta(source, "job", jobData)
+    local gradeData = jobData.grades[rank] or jobData.grades[0] 
+
+    enx.Cache.setPlayerMeta(source, "job", {
+        name = job,
+        label = jobData.label,
+        grade = {
+            name = gradeData.name,
+            rank = rank
+        }
+    })
 end
+
+exports('setJob', enx.Cache.setJob)
+
+enx.Cache.setGang = function(source, gang, rank)
+    if not source or source == 0 then return end 
+
+    local gangData = enx.Gangs[gang]
+    if not gangData then return end
+
+    local gradeData = gangData.grades[rank] or gangData.grades[0] 
+
+    enx.Cache.setPlayerMeta(source, "gang", {
+        name = gang,
+        label = gangData.label,
+        grade = {
+            name = gradeData.name,
+            rank = rank
+        }
+    }) 
+end
+
+exports('setGang', enx.Cache.setGang)
