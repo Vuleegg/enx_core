@@ -248,3 +248,16 @@ enx.Cache.setGang = function(source, gang, rank)
 end
 
 exports('setGang', enx.Cache.setGang)
+
+enx.Cache.setGroup = function(source, group)
+    if not source or source == 0 then return end 
+
+    local player = enx.Cache.getUser(source)
+    if not player then return end 
+
+    if player.charinfo.group then return end
+
+    player.charinfo.group = group
+
+    enx.Cache.setPlayerMeta(source, "charinfo", player.charinfo)
+end
