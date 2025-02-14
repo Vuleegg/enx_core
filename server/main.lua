@@ -269,7 +269,6 @@ enx.Cache.setGroup = function(source, group)
     if not IsPlayerAceAllowed(source, group) then
         lib.addPrincipal('player.' .. source, 'group.' .. group)
         lib.addAce('player.' .. source, 'group.' .. group)
-        print(string.format("[Info] Group for player with ID %d has been set to: %s", source, group))
     end
 end
 
