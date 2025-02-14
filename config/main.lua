@@ -18,7 +18,6 @@
 ---@field extensions.discordLogs boolean Whether to enable Discord logging.
 ---@field extensions.enableSocietyPayouts boolean Whether society payouts are enabled.
 ---@field extensions.paycheckInterval number Interval in seconds for paycheck payouts.
----@field extensions.enableDebug boolean Whether debug mode is enabled.
 ---@field extensions.enablePVP boolean Whether player-versus-player combat is enabled.
 ---@field extensions.enableWantedLevel boolean Whether the wanted level system is enabled.
 ---@field extensions.multichar boolean Whether to enable the multi-character system.
@@ -84,7 +83,7 @@ return {
         discordLogs = false,
         enableSocietyPayouts = true,
         paycheckInterval = 60,
-        enableDebug = false,
+    
         enablePVP = true,
         enableWantedLevel = false,
         multichar = false,
