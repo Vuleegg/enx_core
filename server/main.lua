@@ -145,7 +145,7 @@ end
 exports('AddItem', enx.Cache.AddItem)
 
 ---@param data table The data containing source, item, count, and optional metadata.
----@field source number The player's source ID.
+---@field source number The players source ID.
 ---@field item string The item name.
 ---@field count number The item quantity.
 ---@field metadata table|nil Optional metadata for the item.
