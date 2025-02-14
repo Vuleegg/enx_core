@@ -23,3 +23,17 @@ getCharName = function(source)
 end
 
 exports('getCharName', getCharName)
+
+toggleDuty = function(source, boolean)
+    if not source or source == 0 then return end 
+    Player(source).state.aduty = boolean
+end
+
+exports('toggleDuty', toggleDuty)
+
+toggleHiddenDuty = function(source, boolean)
+    if not source or source == 0 then return end 
+    Player(source).state.hiddenDuty = boolean
+end
+
+exports('toggleHiddenDuty', toggleHiddenDuty)
