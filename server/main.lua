@@ -255,7 +255,7 @@ enx.Cache.setGroup = function(source, group)
     local player = enx.Cache.getUser(source)
     if not player then return end 
 
-    local identifier = player.charinfo.citizenid
+    local identifier = player.userId
     local lastGroup = player.charinfo.group
 
     if lastGroup and lastGroup ~= group then
